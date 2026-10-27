@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GaitPPT · BMVC 2026</title>
+<meta name="description" content="GaitPPT: Parallel Part-based Transformer for Gait Recognition from Lidar Point Clouds. BMVC 2026.">
+<meta property="og:title" content="GaitPPT: Parallel Part-based Transformer for Gait Recognition from Lidar Point Clouds">
+<meta property="og:description" content="94.23% Rank-1 on SUSTech1K with 2.87 M parameters. BMVC 2026.">
+<meta property="og:image" content="https://hasipasi.github.io/GaitPPT/static/img/video_poster.jpg">
+<meta property="og:url" content="https://hasipasi.github.io/GaitPPT/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#13233F;--ink:#1A2232;--body:#465166;--muted:#5F6A7D;--acc:#8EC3FF;--ppt:#2D68B0;--wtp:#3A8A4B;--aug:#C96A16;--gp:#2E86C1;--panel:#F3F6FA;--line:#E4E8EE;--bg:#F7F9FC}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--gp)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header{background:var(--navy);color:#fff;padding:56px 0 48px}
+.venue{display:inline-flex;align-items:center;gap:12px;background:#fff;border-radius:10px;padding:6px 14px 6px 8px;color:var(--navy);font-weight:700;font-size:15px;text-decoration:none}
+.venue img{height:30px;display:block}
+h1{font-size:clamp(30px,5vw,50px);line-height:1.12;letter-spacing:-.02em;margin:24px 0 22px;font-weight:800}
+h1 span{color:var(--acc)}
+.authors{font-size:clamp(17px,2.4vw,21px);font-weight:600;margin:0;color:#fff}
+.authors .sep{color:#6A80A6;margin:0 .45em}
+.authors sup{font-size:.6em;font-weight:500}
+.note{font-size:14px;color:#AFC0D8;margin:6px 0 0}
+.affil{display:flex;flex-wrap:wrap;gap:14px;margin:24px 0 30px}
+.affil .chip{background:#fff;border-radius:12px;display:flex;align-items:center;gap:14px;padding:10px 16px;color:var(--ink);font-size:14px;line-height:1.35;flex:1 1 300px;min-width:0}
+.affil .chip img{height:44px;flex:none}
+.affil .chip.ppke img{height:56px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;background:#fff;color:var(--navy);font-weight:700;font-size:16px;text-decoration:none;border:1.5px solid #fff}
+.btn:hover{background:var(--acc);border-color:var(--acc)}
+.btn.soon{background:transparent;color:#C3D0E3;border-color:#6A80A6;cursor:default}
+.btn svg{width:18px;height:18px}
+main section{padding:48px 0 8px}
+h2{font-size:28px;letter-spacing:-.01em;margin:0 0 18px;font-weight:800}
+.kick{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gp);margin-bottom:6px}
+video{width:100%;border-radius:14px;background:#000;display:block;box-shadow:0 18px 40px rgba(19,35,63,.18)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:26px}
+.stat{background:#fff;border:1px solid var(--line);border-left:6px solid var(--gp);border-radius:12px;padding:16px 20px}
+.stat b{display:block;font-size:34px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat span{color:var(--body);font-size:15px}
+.stat em{display:block;font-style:normal;color:#1E7A44;font-weight:700;font-size:14px;margin-top:2px}
+p{color:var(--body);margin:0 0 14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;border-radius:8px}
+figcaption{font-size:14px;color:var(--muted);margin-top:10px;line-height:1.5}
+.comps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
+.comp{background:#fff;border:1px solid var(--line);border-top:5px solid var(--c);border-radius:12px;padding:16px 18px}
+.comp h3{margin:0 0 6px;font-size:18px;color:var(--c)}
+.comp p{font-size:15px;margin:0}
+.tablewrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line);background:#fff}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:760px}
+th{background:var(--navy);color:#fff;font-weight:700;padding:10px 10px;text-align:right;white-space:nowrap}
+td{padding:9px 10px;text-align:right;border-top:1px solid var(--line);color:var(--body);font-variant-numeric:tabular-nums;white-space:nowrap}
+th:nth-child(-n+2),td:nth-child(-n+2){text-align:left}
+td:first-child{color:var(--ink);font-weight:600}
+tr.prev td{background:#F1F2F4}
+tr.ours td{background:#EAF2FB}
+tr.ours td:first-child{color:var(--ppt);font-weight:800}
+td.b{font-weight:800;color:var(--ink)}
+.small{font-size:13px;color:var(--muted);margin-top:8px}
+pre{background:var(--navy);color:#E4ECF7;border-radius:12px;padding:18px;overflow-x:auto;font:14px/1.55 'JetBrains Mono',ui-monospace,monospace;margin:0}
+.bib{position:relative}
+.copy{position:absolute;top:10px;right:10px;background:#fff;color:var(--navy);border:0;border-radius:8px;padding:6px 12px;font:600 13px Inter,sans-serif;cursor:pointer}
+footer{margin-top:56px;padding:28px 0 40px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+footer p{font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="venue" href="https://bmvc2026.bmva.org/"><img src="static/img/bmvc-logo.png" alt="BMVC 2026"> Lancaster, UK · 23–26 Nov 2026</a>
+  <h1><span>GaitPPT</span>: Parallel Part-based Transformer for Gait Recognition from Lidar Point Clouds</h1>
+  <p class="authors">Balázs M. Bódis<sup>†✉</sup><span class="sep">·</span>Gergő Nagy<sup>†</sup><span class="sep">·</span>Csaba Benedek</p>
+  <p class="note">† equal contribution · ✉ corresponding author: <a href="mailto:bodis.balazs.mark@sztaki.hun-ren.hu" style="color:#AFC0D8">bodis.balazs.mark@sztaki.hun-ren.hu</a></p>
+  <div class="affil">
+    <div class="chip"><img src="static/img/sztaki_logo.svg" alt="HUN-REN SZTAKI"><span>HUN-REN Institute for Computer Science and Control, Budapest, Hungary</span></div>
+    <div class="chip ppke"><img src="static/img/ppke_itk_logo.svg" alt="PPKE ITK"><span>Pázmány Péter Catholic University, Faculty of Information Technology and Bionics, Budapest</span></div>
+  </div>
+  <nav class="btns">
+    <a class="btn" href="static/GaitPPT_BMVC2026.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>Paper</a>
+    <a class="btn" href="#video"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Video</a>
+    <a class="btn" href="static/GaitPPT_poster_BMVC2026.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>Poster</a>
+    <span class="btn soon" title="Code will be released here"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 16-4-4 4-4M16 8l4 4-4 4"/></svg>Code (coming soon)</span>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <section id="video">
+    <div class="kick">BMVC 2026 video</div>
+    <h2>GaitPPT in 3 minutes</h2>
+    <video controls preload="metadata" playsinline poster="static/img/video_poster.jpg"><source src="static/GaitPPT_BMVC2026_video.mp4" type="video/mp4"></video>
+    <div class="stats">
+      <div class="stat"><b>94.23%</b><span>Rank-1 · SUSTech1K · GaitPPT-B</span><em>+1.53 vs LidarGait++</em></div>
+      <div class="stat"><b>85.74%</b><span>Rank-1 · FreeGait · GaitPPT-L</span><em>+3.74 vs LidarGait++</em></div>
+      <div class="stat"><b>2.87 M</b><span>parameters · GaitPPT-B</span><em>34% fewer than LidarGait++</em></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Abstract</h2>
+    <p>Recognizing a person by gait, i.e., the way they walk, is a well-studied biometric task for which Lidar point clouds offer substantially greater robustness than 2D images: the sensor is less affected by lighting and captures the 3D shape of the body more directly, which most notably improves robustness to viewpoint changes. Recent methods for Lidar gait recognition have focused on adapting point-cloud or voxel encoders to the gait domain, but the way information is aggregated within and across frames has received less attention. Most systems take the maximum activation across frames, ignoring that different feature channels may peak at different times in the gait cycle.</p>
+    <p>We introduce <b>GaitPPT</b>, a Parallel Part-based Transformer that targets two underexplored design axes: <em>where</em> attention is allocated within a frame, and <em>how</em> information is aggregated across frames. Spatially, GaitPPT runs multiple transformer encoder branches in parallel, each restricted to a horizontal slice of the body at a different vertical resolution; e.g., leg-height tokens cannot attend to torso-height tokens. Temporally, a lightweight learned module assigns every feature channel its own per-frame weighting, replacing the max-over-frames pooling used by prior work. On the SUSTech1K benchmark, GaitPPT-Base reaches 94.23% Cross-view Rank-1 with only 2.87 M parameters, an absolute improvement of 1.53% over the previous best point-based method, LidarGait++ (92.70% at 4.32 M), while using roughly one-third fewer parameters. These results suggest that an explicit vertical-structure prior is a useful inductive bias for Lidar-based gait recognition, and that frame-wise max pooling underutilizes the temporal structure of gait.</p>
+  </section>
+
+  <section>
+    <h2>Method</h2>
+    <div class="card"><figure><img src="static/img/architecture.png" alt="GaitPPT architecture: point tokenizer, parallel part transformer, weighted temporal pooling" loading="lazy" width="2000" height="1034">
+      <figcaption>GaitPPT architecture. (a) Overall pipeline. (b) Set Abstraction block. (c) Parallel Part Transformer with height mask. (d) Weighted temporal pool.</figcaption></figure></div>
+    <div class="comps">
+      <div class="comp" style="--c:var(--ppt)"><h3>① Parallel Part Transformer</h3><p>One encoder branch per vertical scale. A height mask restricts attention to tokens in the same height bin, using absolute z so the model stays size-aware.</p></div>
+      <div class="comp" style="--c:var(--wtp)"><h3>② Weighted Temporal Pooling</h3><p>Replaces max-over-frames: a small MLP scores every (frame, channel) pair and a per-channel softmax over time pools the sequence. Only 2D² ≈ 131 k extra parameters.</p></div>
+      <div class="comp" style="--c:var(--aug)"><h3>③ Axis-decoupled scaling</h3><p>XY and Z are scaled independently during training, covering more body shapes while staying close to the real training distribution.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What the temporal pooling learns</h2>
+    <div class="card"><figure><img src="static/img/wtp_attention.png" alt="Lidar walking sequences with height bins and per-part, per-frame attention heatmaps" loading="lazy" width="1600" height="1112">
+      <figcaption>Weighted temporal-pool attention on two SUSTech1K sequences (top: normal walking, bottom: with umbrella). Leg bins peak at gait landmarks such as the leg cross, while the global bin stays diffuse. A max-pool over frames cannot capture this.</figcaption></figure></div>
+  </section>
+
+  <section>
+    <h2>Results on SUSTech1K</h2>
+    <div class="tablewrap"><table>
+      <tr><th>Method</th><th>Input</th><th>Params</th><th>NM</th><th>BG</th><th>CL</th><th>CR</th><th>UB</th><th>UF</th><th>OC</th><th>NT</th><th>Overall</th></tr>
+      <tr><td>LidarGait</td><td>depth</td><td>8.03 M</td><td>91.80</td><td>88.64</td><td>74.56</td><td>89.03</td><td>67.50</td><td>80.86</td><td>94.53</td><td>90.41</td><td>86.77</td></tr>
+      <tr><td>HMRNet</td><td>depth + points</td><td>–</td><td>92.70</td><td>92.30</td><td>79.60</td><td>90.30</td><td>83.10</td><td>86.20</td><td>95.20</td><td>90.40</td><td>90.20</td></tr>
+      <tr><td>GaitCloud</td><td>voxels</td><td>–</td><td>89.82</td><td>90.30</td><td>79.17</td><td>89.65</td><td>85.79</td><td>89.02</td><td>94.39</td><td>90.62</td><td>89.20</td></tr>
+      <tr class="prev"><td>LidarGait++</td><td>points</td><td>4.32 M</td><td>94.20</td><td>93.90</td><td>79.70</td><td>92.40</td><td>91.50</td><td>91.90</td><td>96.60</td><td>92.20</td><td>92.70</td></tr>
+      <tr class="ours"><td>GaitPPT-Tiny</td><td>points</td><td>1.05 M</td><td>94.11</td><td>91.44</td><td>76.01</td><td>89.59</td><td>87.79</td><td>90.89</td><td>94.82</td><td>89.19</td><td>90.24</td></tr>
+      <tr class="ours"><td>GaitPPT-Base</td><td>points</td><td>2.87 M</td><td>96.34</td><td class="b">95.64</td><td class="b">81.50</td><td>94.24</td><td>92.91</td><td>94.90</td><td>96.31</td><td class="b">92.49</td><td>94.23</td></tr>
+      <tr class="ours"><td>GaitPPT-Large</td><td>points</td><td>6.15 M</td><td class="b">96.84</td><td>95.59</td><td>81.08</td><td class="b">94.35</td><td class="b">93.01</td><td class="b">94.93</td><td class="b">96.69</td><td>92.35</td><td class="b">94.32</td></tr>
+    </table></div>
+    <p class="small">Cross-view Rank-1 (%), single run, bold = best. NM normal · BG bag · CL clothing · CR carrying · UB umbrella · UF uniform · OC occlusion · NT night. On FreeGait, GaitPPT-L reaches 85.74% Rank-1 / 89.80% mAP and GaitPPT-B 83.80% / 88.45%, versus 82.00% / 87.20% for LidarGait++.</p>
+  </section>
+
+  <section>
+    <h2>Citation</h2>
+    <div class="bib"><button class="copy" type="button">Copy</button><pre id="bibtex">@inproceedings{bodis2026gaitppt,
+  title     = {{GaitPPT}: Parallel Part-based Transformer for Gait Recognition from Lidar Point Clouds},
+  author    = {B{\'o}dis, Bal{\'a}zs M. and Nagy, Gerg{\H{o}} and Benedek, Csaba},
+  booktitle = {Proceedings of the British Machine Vision Conference (BMVC)},
+  year      = {2026}
+}</pre></div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p>Supported in part by the OTKA #143274 and TKP2021-NVA-01 projects of the Hungarian NRDI Office.</p>
+  <p>Code will be released in <a href="https://github.com/Hasipasi/GaitPPT">github.com/Hasipasi/GaitPPT</a>.</p>
+</div></footer>
+<script>
+document.querySelector('.copy').addEventListener('click', e => {
+  navigator.clipboard?.writeText(document.getElementById('bibtex').textContent).then(() => { e.target.textContent = 'Copied'; setTimeout(() => e.target.textContent = 'Copy', 1500); }).catch(() => {});
+});
+</script>
+</body>
+</html>
